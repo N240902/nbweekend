@@ -21,18 +21,13 @@ VALUES
 ('Anathi Luzi', 'anathiluzi@gmail.com', 'customer7'),
 ('Simnikiwe Adonis', 'simnikiweadonis@gmail.com', 'customer8');
 
- CREATE TABLE admins (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    role VARCHAR(20) DEFAULT 'admin'
-);
-INSERT INTO admins (username, password, role)
-VALUES
-	('zainunesa_magmoed', 'zainunesa@gbu.admin', 'admin'),
-    ('usisipho_mxinwa', 'usisipho@gbua.dmin', 'admin'),
-    ('nandipha_zigwebile', 'nandipha@gbu.admin', 'admin'),
-    ('cwayita_ngcwayi', 'cwayita@gbu.admin', 'admin');
+CREATE TABLE `customers_database`.`admnin_login` (
+  `admin_id` INT NOT NULL,
+  `username` VARCHAR(255) NOT NULL,
+  `password_hash` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`admin_id`));
+  
+  
 
 
 

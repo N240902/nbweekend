@@ -1,24 +1,30 @@
 import express from "express";
 import cors from "cors"; 
 import customersRoutes from "./routes/customersRoutes.js";
-import adminRoutes from "./routes/adminRoutes.js";
+
+import adRoutes from './routes/adRoutes.js';
+
 
 const app = express();
-app.use(cors());
+
+app.use( cors({
+    origin: "http://localhost:8080",
+    methods: ['GET,POST,PUT,DELETE'],
+    allowedHeaders: ['Content-Type,Authorization'],
+    credentials: true
+  }));
+
+app.options('*',cors());
+
 app.use(express.json());
 
 app.use("/customers", customersRoutes);
-app.use("/admin", adminRoutes );
-
-app.use(
-  cors({
-    origin: "http://localhost:8080/",
-  })
-)
-app.use(express.json())
+// app.use("/admin", adminRoutes );
+app.use("/api", adRoutes);
 
 
 // Define routes for admins
-app.listen(3000, () => {
-  console.log("Server running at http://localhost:3000/");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(" http://localhost:3000");
 });
